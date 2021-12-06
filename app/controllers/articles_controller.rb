@@ -8,14 +8,9 @@ class ArticlesController < ApplicationController
     
     highlights_ids = @highlights.pluck(:id).join(',')
 
-    if @highlights.empty?
-       @articles = Article.desc_order
-                          .page(current_page).per(2)
-    else
-        @articles = Article.without_highlights(highlights_ids)
+    @articles = Article.without_highlights(highlights_ids)
                           .desc_order
                           .page(current_page).per(2)
-    end
   end
 
   def show; end
