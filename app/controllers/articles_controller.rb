@@ -10,8 +10,8 @@ class ArticlesController < ApplicationController
     highlights_ids = @highlights.pluck(:id).join(',')
 
     @articles = Article.without_highlights(highlights_ids)
-                          .desc_order
-                          .page(current_page).per(2)
+                      .desc_order
+                      .page(current_page).per(2)
   end
 
   def show; end
@@ -50,6 +50,7 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+    authorize @article
   end
 
   def article_params
