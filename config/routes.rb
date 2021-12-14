@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :categories, except: [:show]
   
   resources :articles do
-    resources :comments, only: %i[create]
+    resources :comments, only: %i[create destroy]
   end
 end
